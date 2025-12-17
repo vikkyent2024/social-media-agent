@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "cd admin && npm run dev",
-    "build": "cd admin && npm run build",
+    "build": "cd admin && npm install && npm run build",
     "start": "cd admin && npm run start",
     "clean": "rm -rf dist",
     "test": "cross-env TZ=America/Los_Angeles node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=\\.test\\.ts$ --testPathIgnorePatterns=\\.int\\.test\\.ts$",
