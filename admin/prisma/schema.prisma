@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SocialPost {
+  id        String     @id @default(uuid())
+  sourceUrl String
+  platform  String
+  content   String
+  status    PostStatus @default(draft)
+  createdAt DateTime   @default(now())
+  assets    SocialAsset[]
+}
+
+enum PostStatus {
+  draft
+  approved
+  posted
+}
+
+model SocialAsset {
+  id        String   @id @default(uuid())
+  postId    String
+  post      SocialPost @relation(fields: [postId], references: [id])
+  type      String   // image, video
+  provider  String   // openai, pexels, unsplash
+  prompt    String?
+  imageUrl  String
+  altText   String?
+  meta      Json?
+  createdAt DateTime @default(now())
+}
