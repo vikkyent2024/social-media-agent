@@ -22,8 +22,8 @@ export default async function PostDetailPage({ params }: { params: Promise<{ id:
                     &larr; Back to Posts
                 </Link>
                 <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${post.status === 'draft' ? 'bg-yellow-100 text-yellow-800' :
-                        post.status === 'approved' ? 'bg-green-100 text-green-800' :
-                            'bg-gray-100 text-gray-800'
+                    post.status === 'approved' ? 'bg-green-100 text-green-800' :
+                        'bg-gray-100 text-gray-800'
                     }`}>
                     {post.status}
                 </span>
@@ -50,17 +50,11 @@ export default async function PostDetailPage({ params }: { params: Promise<{ id:
             {imageAsset && (
                 <div className="mb-8">
                     <h4 className="text-lg font-medium mb-3">Associated Image</h4>
-                    <div className="border rounded-lg overflow-hidden bg-gray-100">
-                        <img
-                            src={imageAsset.imageUrl}
-                            alt={imageAsset.altText || "Social post image"}
-                            className="w-full h-auto max-h-96 object-contain"
-                        />
-                        <div className="p-3 text-xs text-gray-500 flex justify-between">
-                            <span>Provider: {imageAsset.provider}</span>
-                            {imageAsset.prompt && <span title={imageAsset.prompt}>Prompt available</span>}
-                        </div>
-                    </div>
+                    <img
+                        src={imageAsset.imageUrl}
+                        alt={imageAsset.altText || "Social post image"}
+                        className="w-full rounded border"
+                    />
                 </div>
             )}
 
